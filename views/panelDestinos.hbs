@@ -1,0 +1,77 @@
+<section id="panelDestinos">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1 contAdminDestinos">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Viaje</th>
+                        <th scope="col">Fecha ida</th>
+                        <th scope="col">Fecha vuelta</th>
+                        <th scope="col">descripcion</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Activo</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#if destinos.length}}
+                        {{#each destinos}}
+                            <tr>
+                                <th scope="row">{{id_destino}}</th>
+                                <td>{{viaje}}</td>
+                                <td>{{fechaIda}}</td>
+                                <td>{{fechaVuelta}}</td>
+                                <td>{{descripcion}}</td>
+                                <td>{{imagen}}</td>
+                                <td>{{precio}} €</td>
+                                <td>
+                                    <input type="checkbox" id="customCheck1" {{#if activo}} checked  {{/if}}>
+                                </td>
+                                <td><button type="button" class="btn btn-danger">Borrar</button></td>
+                            </tr>
+                        {{/each}}
+                    {{/if}}
+                    </tbody>
+                </table>
+                <h4>Añadir destino nuevo</h4>
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Viaje">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Fecha ida">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Fecha vuelta">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="descripcion">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="imagen">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="precio">
+                        </div>
+                        <div class="col">
+                            <select id="inputState" class="form-control">
+                                <option selected>Activo</option>
+                                <option>si</option>
+                                <option>no</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-primary">Añadir</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -30,11 +30,23 @@ router.get('/registro', function(req, res, next) {
 });
 // Controlador Destinos
 router.get('/', (req,res,next)=>{
-    destinoModel.fetchAll((error,destinos)=>{
+    destinoModel.fetch((error,destinos)=>{
         if(error) return res.status(500).json(error);
         res.render('home',{
             title:"Travel",
             layout:"layout",
+            destinos
+        })
+    })
+});
+
+// Panel destinos
+router.get('/admin/destinos', function(req, res, next) {
+    destinoModel.fetchAll((error,destinos)=>{
+        if(error) return res.status(500).json(error);
+        res.render('panelDestinos',{
+            title:"panel admin destinos",
+            layout:"layout2",
             destinos
         })
     })

@@ -426,6 +426,28 @@ footer{
   color: #fff;
 }
 /* FIN Registro */
+/* Panel administracion destinos*/
+#panelDestinos{
+  background-image: url("../images/invierno.jpg");
+  background-position: center center;
+  background-size: cover;
+  padding-bottom: 3em;
+  height: 100%;
+}
+.contAdminDestinos{
+    padding-bottom: 2vh;
+    margin-top: 12vh;
+    background-color: #00091a;
+    opacity:0.8;
+    background-size:cover;
+    text-align: center;
+    color:white;
+}
+
+.contAdminDestinos h4{
+    border-top:1px solid yellow ;
+    border-bottom: 1px solid yellow;
+}
 
 
 /* pagina 404*/
