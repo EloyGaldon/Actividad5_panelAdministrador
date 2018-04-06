@@ -26,12 +26,14 @@ hbs.registerPartials(`${__dirname}/views/partials`);
 // que actualize la pag automaticamente sin apagar el server
 var hbsUtils=require('hbs-utils')(hbs);
 hbsUtils.registerWatchedPartials(`${__dirname}/views/partials`);
+//crea una coky
 app.use(session({
-    secret:'secret',
+    secret:'1234',
     name: 'Sesion',
     resave:true,
     saveUninitialized:true
 }));
+
 app.use(flash());
 app.use(logger('combined',{stream:winston.stream}));
 //app.use(logger('dev'));

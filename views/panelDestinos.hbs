@@ -28,44 +28,43 @@
                                 <td>{{imagen}}</td>
                                 <td>{{precio}} €</td>
                                 <td>
-                                    <input type="checkbox" id="customCheck1" {{#if activo}} checked  {{/if}}>
+                                    <input type="checkbox" onclick='window.location.assign("/admin/destinos/active/{{id_destino}}")'  id="customCheck1" {{#if activo}} checked  {{/if}}>
                                 </td>
-                                <td><button type="button" class="btn btn-danger">Borrar</button></td>
+                                <td><button type="button"  onclick='window.location.assign("/admin/destinos/delete/{{id_destino}}")' class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
                             </tr>
                         {{/each}}
                     {{/if}}
                     </tbody>
                 </table>
                 <h4>Añadir destino nuevo</h4>
-                <form>
+                <form action="/admin/destinos/create" method="post">
                     <div class="row">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Viaje">
+                            <input type="text" class="form-control" name="viaje" placeholder="Viaje" required>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Fecha ida">
+                            <input type="text" class="form-control" name="fecha_ida" placeholder="Fecha ida" required>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Fecha vuelta">
+                            <input type="text" class="form-control" name="fecha_vuelta" placeholder="Fecha vuelta" required>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="descripcion">
+                            <input type="text" class="form-control" name="descripcion" placeholder="descripcion" required>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="imagen">
+                            <input type="text" class="form-control" name="imagen" placeholder="imagen" required>
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="precio">
+                            <input type="text" class="form-control" name="precio" placeholder="precio" required>
                         </div>
                         <div class="col">
-                            <select id="inputState" class="form-control">
-                                <option selected>Activo</option>
-                                <option>si</option>
-                                <option>no</option>
+                            <select id="inputState" class="form-control" name="activo">
+                                <option value="0" selected>No</option>
+                                <option value="1">si</option>
                             </select>
                         </div>
                         <div class="col">
-                            <button type="submit" class="btn btn-primary">Añadir</button>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i></button>
                         </div>
 
                     </div>

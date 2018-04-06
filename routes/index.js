@@ -29,8 +29,10 @@ router.get('/registro', function(req, res, next) {
         });
 });
 // Controlador Destinos
+
+//mostrar destinos en home
 router.get('/', (req,res,next)=>{
-    destinoModel.fetch((error,destinos)=>{
+    destinoModel.fetchActivo((error,destinos)=>{
         if(error) return res.status(500).json(error);
         res.render('home',{
             title:"Travel",
@@ -41,6 +43,8 @@ router.get('/', (req,res,next)=>{
 });
 
 // Panel destinos
+
+// Muestra todos los destinos
 router.get('/admin/destinos', function(req, res, next) {
     destinoModel.fetchAll((error,destinos)=>{
         if(error) return res.status(500).json(error);
@@ -51,6 +55,48 @@ router.get('/admin/destinos', function(req, res, next) {
         })
     })
 });
+//Editamos el campo activo de destino
+
+router.get('/admin/destinos/active/:id', function (req,res,next) {
+    destinoModel.activoUpdate(req.params.id, (error,dest)=>{
+         if(error) res.status(500).json(error);
+         else{
+             res.redirect('/admin/destinos');
+         }
+    })
+});
+
+//Eliminamos destino
+router.get('/admin/destinos/delete/:id', function (req,res,next) {
+    destinoModel.destinoDelete(req.params.id,(error,dest)=>{
+        if(error) res.status(500).json(error);
+        else{
+            res.redirect('/admin/destinos');
+        }
+    })
+});
+//Creacion de destinos
+router.post('/admin/destinos/create', function (req,res,next) {
+    let destino={
+        viaje:req.body.viaje,
+        fechaIda:req.body.fecha_ida,
+        fechaVuelta:req.body.fecha_vuelta,
+        descripcion:req.body.descripcion,
+        imagen:req.body.imagen,
+        precio:req.body.precio,
+        activo:req.body.activo
+    }
+    destinoModel.destinoCreate(destino,(error,dest)=>{
+        if(error) res.status(500).json(error);
+        else{
+            res.redirect('/admin/destinos');
+        }
+    })
+
+})
+
+
+
 // Controlador Usuarios
 router.get('/userlist', (req,res,next)=>{
     userModel.fetchAll((error,users)=>{
@@ -82,16 +128,11 @@ router.post('/loginook', function (req,res) {
                 break;
             case 1:
                 console.log(Usuario);
-                res.render('home', {
-                    title: "Usuario logeado",
-                    layout: 'layout',
-                    logeado: true,
-                    usuario: Usuario.usuario
-                })
+                res.redirect('/');
                 break;
         }
     })
-})
+});
 
 
 router.post('/registrook', function (req, res) {
