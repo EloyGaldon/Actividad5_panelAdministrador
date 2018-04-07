@@ -71,23 +71,25 @@ header{
 }
 */
 #menu img{
-  max-width: 7em;
+  max-width: 5em;
 }
 
 #textMenu{
   text-align: center;
 }
+.menuUser{
+  margin-right: 5vw;
+}
 
-/*
-#redesSocial ul{
+.logReg2 ul{
   list-style-type: none;
 }
 
-#redesSocial ul li{
+.logReg2 ul li{
   float: left;
   margin-right: 0.5em;
 }
-*/
+
 #carouselExampleIndicators {
   max-height: 100vh;
 }

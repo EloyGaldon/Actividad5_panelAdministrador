@@ -37,6 +37,9 @@ router.get('/', (req,res,next)=>{
         res.render('home',{
             title:"Travel",
             layout:"layout",
+            isLoged : req.session.isLoged,
+            isAdmin : req.session.isAdmin,
+            user: req.session.username,
             destinos
         })
     })
@@ -48,11 +51,23 @@ router.get('/', (req,res,next)=>{
 router.get('/admin/destinos', function(req, res, next) {
     destinoModel.fetchAll((error,destinos)=>{
         if(error) return res.status(500).json(error);
-        res.render('panelDestinos',{
-            title:"panel admin destinos",
-            layout:"layout2",
-            destinos
-        })
+        else{
+            let isAdmin=req.session.isAdmin;
+            if(req.session.isAdmin==1){
+                res.render('panelDestinos',{
+                    title:"panel admin destinos",
+                    layout:"layout2",
+                    isLoged : req.session.isLoged,
+                    isAdmin : req.session.isAdmin,
+                    user : req.session.username,
+                    destinos
+                })
+            }
+            else{
+                res.redirect('/');
+            }
+        }
+
     })
 });
 //Editamos el campo activo de destino
@@ -102,7 +117,7 @@ router.get('/userlist', (req,res,next)=>{
     userModel.fetchAll((error,users)=>{
         if(error) return res.status(500).json(error);
         res.render('user-list',{
-            title:"Listado de Ususrias",
+            title:"Listado de Usuarios",
             layout:"layout2",
             users
         })
@@ -127,11 +142,26 @@ router.post('/loginook', function (req,res) {
                 })
                 break;
             case 1:
-                console.log(Usuario);
+                //console.log(Usuario);
+                if(Usuario.usuario=='admin'){
+                    req.session.username="Admin";
+                    req.session.isLoged=1;
+                    req.session.isAdmin=1;
+                }
+                else{
+                    req.session.username=Usuario.usuario;
+                    req.session.isLoged=1;
+                    req.session.isAdmin=0;
+                }
                 res.redirect('/');
                 break;
         }
     })
+});
+
+router.get('/destroy',(req,res,next)=>{
+    req.session.destroy();
+    res.redirect('/');
 });
 
 
@@ -169,6 +199,7 @@ router.post('/registrook', function (req, res) {
         }
     })
 })
+
 /*
 router.get('/*', function(req, res, next) {
     res.render('error404',

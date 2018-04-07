@@ -20,12 +20,36 @@
                     <a class="nav-link" href="#Estamos" id="dondeEstamos">Donde Estamos</a>
                 </li>
                 <div class="logReg1">
+                    {{#if isLoged}}
+                        {{#if isAdmin}}
+                            <div class="btn-group dropleft">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user-circle"></i> {{user}}
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/admin/destinos">Panel destinos</a>
+                                    <a class="dropdown-item" href="/destroy">Desconectar</a>
+                                </div>
+                            </div>
+                        {{else}}
+                            <div class="btn-group dropleft">
+                                <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-user-circle"></i> {{user}}
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="">Mi perfil</a>
+                                    <a class="dropdown-item" href="/destroy">Desconectar</a>
+                                </div>
+                            </div>
+                        {{/if}}
+                    {{else}}
                     <li class="nav-item">
                         <a class="btn btn-outline-secondary" href="/login"><i class="fas fa-user"></i>Iniciar Sesion</a>
                     </li>
                     <li class="nav-item">
                         <a class="btn btn-outline-secondary boton-registro" href="/registro"><i class="fas fa-sign-in-alt"></i>Registrarse</a>
                     </li>
+                    {{/if}}
                 </div>
             </ul>
         </div>
@@ -41,7 +65,35 @@
             </ul>
         </div>
         -->
-        <div class="logReg2">
+    <div class="logReg2">
+        {{#if isLoged}}
+            {{#if isAdmin}}
+                <div class="btn-group dropleft menuUser">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle"></i> {{user}}
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/admin/destinos">Panel destinos</a>
+                        <a class="dropdown-item" href="/destroy">Desconectar</a>
+                    </div>
+                </div>
+            {{else}}
+                <div class="btn-group dropleft menuUser">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle"></i> {{user}}
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="">Mi perfil</a>
+                        <a class="dropdown-item" href="/destroy">Desconectar</a>
+                    </div>
+                </div>
+            {{/if}}
+
+
+
+
+        {{else}}
+
             <ul>
                 <li class="nav-item">
                     <a class="btn btn-outline-secondary" href="/login"><i class="fas fa-user"></i>Iniciar Sesion</a>
@@ -50,7 +102,9 @@
                     <a class="btn btn-outline-secondary boton-registro" href="/registro"><i class="fas fa-sign-in-alt"></i>Registrarse</a>
                 </li>
             </ul>
-        </div>
+
+        {{/if}}
+    </div>
     </nav>
 
 
