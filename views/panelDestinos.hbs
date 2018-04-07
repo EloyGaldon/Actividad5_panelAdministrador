@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1 contAdminDestinos">
-                <table class="table">
+                <table class="table tablaDestinos">
                     <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -25,7 +25,7 @@
                                 <td>{{fechaIda}}</td>
                                 <td>{{fechaVuelta}}</td>
                                 <td>{{descripcion}}</td>
-                                <td>{{imagen}}</td>
+                                <td><img src="/images/{{imagen}}"></td>
                                 <td>{{precio}} €</td>
                                 <td>
                                     <input type="checkbox" onclick='window.location.assign("/admin/destinos/active/{{id_destino}}")'  id="customCheck1" {{#if activo}} checked  {{/if}}>
