@@ -1,128 +1,94 @@
 <section id="panelDestinos">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-10 offset-lg-1 col-md-10 offset-md-1 contAdminDestinos">
-                <table class="table tablaDestinos">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Viaje</th>
-                        <th scope="col">Fecha ida</th>
-                        <th scope="col">Fecha vuelta</th>
-                        <th scope="col">descripcion</th>
-                        <th scope="col">Imagen</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Activo</th>
-                        <th scope="col"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {{#if destinos.length}}
-                        {{#each destinos}}
-                            <tr>
-                                <th scope="row">{{id_destino}}</th>
-                                <td>{{viaje}}</td>
-                                <td>{{fechaIda}}</td>
-                                <td>{{fechaVuelta}}</td>
-                                <td>{{descripcion}}</td>
-                                <td><img src="/images/{{imagen}}"></td>
-                                <td>{{precio}} €</td>
-                                <td>
-                                    <input type="checkbox" onclick='window.location.assign("/admin/destinos/active/{{id_destino}}")'  id="customCheck1" {{#if activo}} checked  {{/if}}>
-                                </td>
-                                <td><button type="button"  onclick='window.location.assign("/admin/destinos/delete/{{id_destino}}")' class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
-                            </tr>
-                        {{/each}}
-                    {{/if}}
-                    </tbody>
-                </table>
-                <div class="newDestyn">
-                    <div class="d-flex justify-content-center">
-                        <button id="newDest" type="button" class="btn btn-outline-primary">Nuevo Destino</button>
-                    </div>
-                    <div id="formCrearDest" style="display: none" class="addDest">
-                        <form action="/admin/destinos/create" method="post">
-                            <div class="row justify-content-center">
-                                <div class="col">
-                                    <input type="text" class="form-control" name="viaje" placeholder="Viaje" required>
+            <div class="col-10 offset-1 contAdminDestinos">
+                <div class="table-responsive">
+                    <table class="table table-sm tablaDestinos">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Viaje</th>
+                            <th scope="col">Fecha ida</th>
+                            <th scope="col">Fecha vuelta</th>
+                            <th scope="col">descripcion</th>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Activo</th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#if destinos.length}}
+                            {{#each destinos}}
+                                <tr>
+                                    <th scope="row">{{id_destino}}</th>
+                                    <td>{{viaje}}</td>
+                                    <td>{{fechaIda}}</td>
+                                    <td>{{fechaVuelta}}</td>
+                                    <td>{{descripcion}}</td>
+                                    <td><img src="/images/{{imagen}}"></td>
+                                    <td>{{precio}} €</td>
+                                    <td>
+                                        <input type="checkbox" onclick='window.location.assign("/admin/destinos/active/{{id_destino}}")'  id="customCheck1" {{#if activo}} checked  {{/if}}>
+                                    </td>
+                                    <td><button type="button"  onclick='window.location.assign("/admin/destinos/delete/{{id_destino}}")' class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
+                                </tr>
+                            {{/each}}
+                        {{/if}}
+                        </tbody>
+                    </table>
+                    <div class="newDestyn">
+                        <div class="d-flex justify-content-center">
+                            <button id="newDest" type="button" class="btn btn-outline-primary">Nuevo Destino</button>
+                        </div>
+                        <div id="formCrearDest" style="display: none" class="addDest">
+                            <form action="/admin/destinos/create" method="post">
+                                <div class="row justify-content-center">
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="viaje" placeholder="Viaje" required>
+                                    </div>
+                                    <div class="col">
+                                        <select id="inputState" class="form-control" name="activo">
+                                            <option selected>Acivo</option>
+                                            <option value="0">No</option>
+                                            <option value="1">si</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <select id="inputState" class="form-control" name="activo">
-                                        <option selected>Acivo</option>
-                                        <option value="0">No</option>
-                                        <option value="1">si</option>
-                                    </select>
+                                <div class="row justify-content-center">
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="fecha_ida" placeholder="Fecha ida" required>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="fecha_vuelta" placeholder="Fecha vuelta" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col">
-                                    <input type="text" class="form-control" name="fecha_ida" placeholder="Fecha ida" required>
+                                <div class="row justify-content-center">
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="precio" placeholder="precio" required>
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="imagen" placeholder="imagen" required>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <input type="text" class="form-control" name="fecha_vuelta" placeholder="Fecha vuelta" required>
+                                <div class="row justify-content-center">
+                                    <div class="col">
+                                        <input type="text" class="form-control" name="descripcion" placeholder="descripcion" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col">
-                                    <input type="text" class="form-control" name="precio" placeholder="precio" required>
+                                <div class="row justify-content-center">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-outline-primary"><i class="fas fa-plus-circle"></i> Añadir</button>
+                                        <button id="newDestClose" type="button" class="btn btn-outline-danger"><i class="fas fa-times-circle"></i> Cerrar</button>
+                                    </div>
                                 </div>
-                                <div class="col">
-                                    <input type="text" class="form-control" name="imagen" placeholder="imagen" required>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col">
-                                    <input type="text" class="form-control" name="descripcion" placeholder="descripcion" required>
-                                </div>
-                            </div>
-                            <div class="row justify-content-center">
-                                <div class="col">
-                                    <button type="submit" class="btn btn-outline-primary"><i class="fas fa-plus-circle"></i> Añadir</button>
-                                    <button id="newDestClose" type="button" class="btn btn-outline-danger"><i class="fas fa-times-circle"></i> Cerrar</button>
-                                </div>
-                            </div>
 
 
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
-                <!--
-
-                <form action="/admin/destinos/create" method="post">
-                    <div class="row">
-                        <div class="col">
-                            <input type="text" class="form-control" name="viaje" placeholder="Viaje" required>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" name="fecha_ida" placeholder="Fecha ida" required>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" name="fecha_vuelta" placeholder="Fecha vuelta" required>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" name="descripcion" placeholder="descripcion" required>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" name="imagen" placeholder="imagen" required>
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" name="precio" placeholder="precio" required>
-                        </div>
-                        <div class="col">
-                            <select id="inputState" class="form-control" name="activo">
-                                <option value="0" selected>No</option>
-                                <option value="1">si</option>
-                            </select>
-                        </div>
-                        <div class="col">
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-plus-circle"></i></button>
-                        </div>
-
-                    </div>
-                </form>
-                -->
             </div>
         </div>
-
     </div>
 </section>
