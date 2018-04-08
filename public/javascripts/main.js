@@ -39,3 +39,18 @@ $("a").on('click', function(event) {
     } // End if
 });
 
+// Mostrar y esconder añadir destino
+
+$('#newDest').click(function () {
+   // $('#formCrearDest').slideToggle(2000);
+   // $('#formCrearDest').delay(2000).slideToggle(1000);
+    $('#formCrearDest').fadeIn(1000);
+    
+});
+
+$('#newDestClose').click(function () {
+    //$('#formCrearDest').slideToggle(2000);
+    //$('#formCrearDest').delay(2000).slideToggle(1000);
+    $('#formCrearDest').fadeOut(1000);
+
+})

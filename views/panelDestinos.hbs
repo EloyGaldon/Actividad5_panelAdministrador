@@ -36,7 +36,58 @@
                     {{/if}}
                     </tbody>
                 </table>
-                <h4>Añadir destino nuevo</h4>
+                <div class="newDestyn">
+                    <div class="d-flex justify-content-center">
+                        <button id="newDest" type="button" class="btn btn-outline-primary">Nuevo Destino</button>
+                    </div>
+                    <div id="formCrearDest" style="display: none" class="addDest">
+                        <form action="/admin/destinos/create" method="post">
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <input type="text" class="form-control" name="viaje" placeholder="Viaje" required>
+                                </div>
+                                <div class="col">
+                                    <select id="inputState" class="form-control" name="activo">
+                                        <option selected>Acivo</option>
+                                        <option value="0">No</option>
+                                        <option value="1">si</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <input type="text" class="form-control" name="fecha_ida" placeholder="Fecha ida" required>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" name="fecha_vuelta" placeholder="Fecha vuelta" required>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <input type="text" class="form-control" name="precio" placeholder="precio" required>
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" name="imagen" placeholder="imagen" required>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <input type="text" class="form-control" name="descripcion" placeholder="descripcion" required>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                    <button type="submit" class="btn btn-outline-primary"><i class="fas fa-plus-circle"></i> Añadir</button>
+                                    <button id="newDestClose" type="button" class="btn btn-outline-danger"><i class="fas fa-times-circle"></i> Cerrar</button>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+                <!--
+
                 <form action="/admin/destinos/create" method="post">
                     <div class="row">
                         <div class="col">
@@ -69,6 +120,7 @@
 
                     </div>
                 </form>
+                -->
             </div>
         </div>
 
